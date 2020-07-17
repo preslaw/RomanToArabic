@@ -1,0 +1,28 @@
+romanEqv = {'I':1, 'V':5, 'X':10, 'L':50, 'C':100, 'D':500, 'M':1000}
+
+romanNumber = 'M' # please write roman number here
+
+arabicNumber = []
+for a in romanNumber:
+  arabicNumber+= [romanEqv[a]]
+  
+arabicNumber = arabicNumber[::-1] 
+
+print (arabicNumber)
+
+arabicToBeSummed=[]
+arabicValue= 0
+skip = False
+
+for a in range(len(arabicNumber)-1):
+    if skip == True:
+      skip = False
+      continue
+    print(a, arabicValue, arabicNumber[a],arabicNumber[a+1])
+    if arabicNumber[a+1]<arabicNumber[a]:
+      arabicValue = arabicValue + arabicNumber[a]-arabicNumber[a+1]
+      skip = True
+    else:
+      arabicValue += arabicNumber[a]
+
+print(arabicValue+arabicNumber[len(arabicNumber)-1])
